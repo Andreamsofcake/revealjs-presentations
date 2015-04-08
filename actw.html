@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>More CSS Basics: The Box Model and Display Properties</title>
+
+		<meta name="description" content="A short presentation for ACT-W 2015's HTML and CSS workshop">
+		<meta name="author" content="Hanna Liebl">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/moon.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>More CSS Basics</h1>
+					<h3>The Box Model and Display Properties</h3>
+				</section>
+
+				<section>
+					<h2>What is the Box Model?</h2>
+					<p>
+						Just a way of saying: "Every element in web design is a rectangular box." The box has certain properties that we can set, which we will go over shortly.
+					</p>
+				</section>
+
+				<section>
+					<h2>Why does this Matter?</h2>
+					<p>
+						It may seem obvious, but boxes are useful shapes, they fit together nicely next to and inside of each other and have a width and a height. Using HTML and CSS we can define those widths and heights and piece together these boxes of content to build a webpage. Before we talk about the details of the box model, it's important to understand the different ways HTML elements can be displayed, however.
+					</p>
+				</section>
+
+				<section>
+					<h2>Understanding the Display Property</h2>
+					<p>
+					The three most important display properties in CSS: block, inline, and inline-block. Let's go over them!
+					</p>
+				</section>
+
+				<section>
+					<h2>Display: Block</h2>
+					<p>
+						An element with <code>display: block</code> will occupy all available width, regardless of content, and begin on a new line. We call these block-level elements.
+					</p>
+					<p>
+						<a target="_blank" href="http://codepen.io/hannaliebl/pen/wBbxbY">Here's a basic example of block-level elements.</a>
+					</p>
+					<p>
+						Tags that default to being block-level include p, div, section, header, footer, and all heading tags (like h1, h2, etc.)
+					</p>
+				</section>
+
+				<section>
+					<h2>Display: Inline</h2>
+					<p>
+						An element with <code>display: inline</code> will occupy only the width of its content and does not begin on a new line. It will not respect any custom widths and heights that you set, though it does have an inherent width and height based on its own content. It will respect padding declarations but not top and right margins (more on that in a bit).
+					</p>
+					<p>
+						<a target="_blank" href="http://codepen.io/hannaliebl/pen/GgaXrX">Here's a basic example of inline-level elements.</a>
+					</p>
+					<p>
+						Tags that default to being block-level include anchor tags and spans.
+					</p>
+				</section>
+
+				<section>
+					<h2>Details of the Box Model</h2>
+					<p>
+						Now that we understand block and inline displays it's a good time to go back to the box model. To review, all HTML elements are a box, but they also all have certain properties that can be set:</p>
+					<p class="fragment Padding">Padding</p>
+					<p class="fragment Margin">Border</p>
+					<p class="fragment Margin">Margin</p>
+				</section>
+
+				<section>
+					<h2>The Box Model Illustrated</h2>
+					<img src="./img/box-model.png">
+					<p><a target="_blank" href="http://codepen.io/hannaliebl/pen/qEGMpV">Check out a live example.</a></p>
+				</section>
+
+				<section>
+					<h2>Defining Margin, Padding, and Borders</h2>
+					<p>
+						There are a couple ways to define margins, borders, and padding. The first is to explicitly set them:
+					</p>
+					<pre><code data-trim contenteditable>
+.mystyle {
+  margin-left: 10px;
+  margin-right: 5px;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+					</code></pre>
+					<p>
+						Then there is a shorthand way to define them all in one property. The four spots in this single-line declaration always correspond to TOP RIGHT BOTTOM LEFT:
+					</p>
+<pre><code data-trim contenteditable>
+.mystyle {
+  margin: 30px 5px 20px 10px;
+}
+</code></pre>
+				</section>
+
+				<section>
+					<h2>Defining Margin, Padding, and Borders</h2>
+					<p>
+						Often you will find yourself defining a property where the top and bottom margins/padding/borders will be the same and then the left and right ones will be the same as each other but different from the bottom and top. There's a shorthand way to do this:
+					</p>
+					<pre><code data-trim contenteditable>
+.mystyle {
+  margin: 10px 20px
+}
+					</code></pre>
+					<p>
+						So in the above example margin-top and margin-bottom are 10px and the margin-left and margin-right are 20px.
+					</p>
+					<p>
+						<a target="_blank" href="http://codepen.io/hannaliebl/pen/pvmxwr">Experiment with the different ways of declaring margin, padding, and borders here.</a>
+					</p>
+				</section>
+
+				<section>
+				<h2>Putting it Together: Display Inline-Block</h2>
+					<p>
+						An element with <code>display: inline-block</code> is (as you can imagine) a hybrid between display block and inline. They do not sit on their own line, but they will respect top and bottom margins declarations and width and height declarations, and like display: inline will also respect padding and margin left and right declarations. The best way to learn is to experiment, so check the link below:
+					</p>
+					<p>
+						<a target="_blank" href="http://codepen.io/hannaliebl/pen/dPEqzd">Here's a basic example of inline-level elements.</a>
+					</p>
+					<p>
+						Tags that default to being inline-block include buttons and selects.
+					</p>
+				</section>
+
+				<section>
+				<h2>Go Forth and Build!</h2>
+					<p>
+						And remember to sign the sign-in sheet so we can send you the website and other resources.
+					</p>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
